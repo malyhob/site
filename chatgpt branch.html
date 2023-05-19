@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Raccoon Website</title>
+  <style>
+    body {
+      background: linear-gradient(to bottom right, #000000, #333333);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+      color: #ffffff;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    main {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 10px;
+      align-items: center;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      color: transparent;
+      background-color: transparent;
+      border: 1px solid transparent;
+      transition: color 0.3s, border-color 0.3s;
+      display: flex;
+      align-items: center;
+    }
+
+    button img {
+      width: 20px;
+      height: 20px;
+      margin-right: 5px;
+    }
+
+    button:hover {
+      color: #ffffff;
+      border-color: #ffffff;
+    }
+
+    #navbar {
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 10px;
+      text-align: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      align-items: center;
+      justify-content: center;
+    }
+
+    #navbar h2 {
+      margin: 0;
+      color: #ffffff;
+      grid-column: 1 / 3;
+    }
+
+    #navbar button {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding-left: 10px;
+      grid-column: span 1;
+    }
+
+    #navbar button img {
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Raccoon</h1>
+  </header>
+
+  <div id="navbar">
+    <h2>Raccoon Navbar 3000</h2>
+    <button onclick="redirectToGoogle()"><img src="icons/google.png" alt="Google">Google</button>
+    <button onclick="redirectToFacebook()"><img src="icons/youtube.png" alt="Youtube">Youtube</button>
+    <button onclick="redirectToTwitter()"><img src="icons/twitter.png" alt="Twitter">Twitter</button>
+    <button onclick="redirectToRandom()"><img src="icons/random.png" alt="Random">Random</button>
+    <button onclick="redirectToNewWebsite()"><img src="icons/new.png" alt="New">New</button>
+  </div>
+
+  <main>
+    <button onclick="redirectToGoogle()"><img src="icons/google.png" alt="Google">Google</button>
+    <button onclick="redirectToFacebook()"><img src="icons/youtube.png" alt="Youtube">Youtube</button>
+    <button onclick="redirectToTwitter()"><img src="icons/twitter.png" alt="Twitter">Twitter</button>
+    <button onclick="redirectToRandom()"><img src="icons/random.png" alt="Random">Random</button>
+    <button onclick="redirectToNewWebsite()"><img src="icons/new.png" alt="New">New</button>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var body = document.body;
+      var header = document.querySelector('header');
+      var navbar = document.querySelector('#navbar');
+      var buttons = document.querySelectorAll('button');
+      var screenWidth = window.innerWidth;
+      var screenHeight = window.innerHeight;
+      var maxDistance = Math.sqrt(Math.pow(screenWidth / 2, 2) + Math.pow(screenHeight / 2, 2));
+      var gradientElement = document.createElement('div');
+      gradientElement.style.position = 'fixed';
+      gradientElement.style.top = '0';
+      gradientElement.style.left = '0';
+      gradientElement.style.width = '100vw';
+      gradientElement.style.height = '100vh';
+      gradientElement.style.pointerEvents = 'none';
+      body.appendChild(gradientElement);
+
+      document.addEventListener('mousemove', function(e) {
+        var mouseX = e.clientX;
+        var mouseY = e.clientY;
+        var distanceFromCenter = Math.sqrt(Math.pow(mouseX - screenWidth / 2, 2) + Math.pow(mouseY - screenHeight / 2, 2));
+        var normalizedDistance = distanceFromCenter / maxDistance;
+        var gradientOpacity = 1 - normalizedDistance;
+        gradientOpacity = Math.max(gradientOpacity, 0); // Ensure gradient opacity doesn't go below 0
+
+        gradientElement.style.background = `radial-gradient(circle at ${mouseX}px ${mouseY}px, rgba(50, 50, 50, ${gradientOpacity}), rgba(0, 0, 0, 1))`;
+
+        // Apply effect to buttons
+        buttons.forEach(function(button) {
+          var buttonRect = button.getBoundingClientRect();
+          var buttonX = buttonRect.left + buttonRect.width / 2;
+          var buttonY = buttonRect.top + buttonRect.height / 2;
+          var buttonDistanceFromMouse = Math.sqrt(Math.pow(mouseX - buttonX, 2) + Math.pow(mouseY - buttonY, 2));
+          var buttonNormalizedDistance = buttonDistanceFromMouse / maxDistance;
+          var buttonOpacity = 1 - buttonNormalizedDistance;
+          buttonOpacity = Math.max(buttonOpacity, 0); // Ensure button opacity doesn't go below 0
+          button.style.color = `rgba(255, 255, 255, ${buttonOpacity})`;
+          button.style.borderColor = `rgba(255, 255, 255, ${buttonOpacity})`;
+        });
+
+        // Apply effect to header
+        var headerRect = header.getBoundingClientRect();
+        var headerX = headerRect.left + headerRect.width / 2;
+        var headerY = headerRect.top + headerRect.height / 2;
+        var headerDistanceFromMouse = Math.sqrt(Math.pow(mouseX - headerX, 2) + Math.pow(mouseY - headerY, 2));
+        var headerNormalizedDistance = headerDistanceFromMouse / maxDistance;
+        var headerOpacity = 1 - headerNormalizedDistance;
+        headerOpacity = Math.max(headerOpacity, 0); // Ensure header opacity doesn't go below 0
+        header.style.color = `rgba(255, 255, 255, ${headerOpacity})`;
+        header.style.borderColor = `rgba(255, 255, 255, ${headerOpacity})`;
+      });
+    });
+
+    function redirectToGoogle() {
+      window.location.href = "https://www.google.com";
+    }
+
+    function redirectToFacebook() {
+      window.location.href = "https://www.youtube.com";
+    }
+
+    function redirectToTwitter() {
+      window.location.href = "https://www.twitter.com";
+    }
+
+    function redirectToRandom() {
+      var websites = [
+        "https://www.example.com",
+        "https://www.anotherexample.com",
+        "https://www.yetanotherexample.com"
+      ];
+      var randomIndex = Math.floor(Math.random() * websites.length);
+      window.location.href = websites[randomIndex];
+    }
+    
+    function redirectToNewWebsite() {
+      window.location.href = "https://www.newwebsite.com";
+    }
+  </script>
+</body>
+</html>
