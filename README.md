@@ -1,4 +1,3 @@
 # raccoon.github.io
-repostiory for my website
-
-im a dumbass so go easy on me
+if you're seeing this something went terribly wrong
+report it plz
