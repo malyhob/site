@@ -90,7 +90,7 @@
       margin-right: 10px;
     }
 
-    img#hello-chat-gif {
+    img#random-image {
       width: 200px;
       height: auto;
     }
@@ -98,7 +98,7 @@
 </head>
 <body>
 
-  <img id="hello-chat-gif" src="icons/death-stranding-hello-chat.gif" alt="hello chat">
+  <img id="random-image" src="icons/death-stranding-hello-chat.gif" alt="hello chat">
   
   <header>
     <h6>chatgpt and</h6>
@@ -132,6 +132,19 @@
       var screenHeight = window.innerHeight;
       var maxDistance = Math.sqrt(Math.pow(screenWidth / 2, 2) + Math.pow(screenHeight / 2, 2));
       var gradientElement = document.createElement('div');
+      var images = [
+        "icons/death-stranding-hello-chat.gif",
+        "https://cdn.lunareclipse.studio/img/projects/webster-api/gallery/8.webp",
+        "https://example.com/image3.jpg",
+        // reminder to self: add more daily images
+      ];
+
+      var randomIndex = Math.floor(Math.random() * images.length);
+      var randomImage = images[randomIndex];
+      
+      var imgElement = document.getElementById('random-image');
+      imgElement.src = randomImage;
+      
       gradientElement.style.position = 'fixed';
       gradientElement.style.top = '0';
       gradientElement.style.left = '0';
