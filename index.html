@@ -1,219 +1,177 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>raccoon</title>
+  <title>raccoon's website</title>
   <link rel="icon" href="icons/favicon.ico" type="image/x-icon">
 
   <meta property="og:title" content="raccoon's super awesome website">
-  <meta property="og:description" content="a website featuring links to various social media profiles">
+  <meta property="og:description" content="a website featuring random stuff">
   <meta property="og:image" content="https://cdn.discordapp.com/attachments/833745553279549500/1109479805868593182/th.png">
   <meta property="og:url" content="https://racckun.github.io/site/">
-
   <style>
     body {
-      background: linear-gradient(to bottom right, #000000, #333333);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
       margin: 0;
       padding: 0;
-      color: #ffffff;
     }
 
     header {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-
-    main {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      grid-gap: 10px;
-      align-items: center;
-    }
-
-    button {
-      padding: 10px 20px;
-      font-size: 16px;
-      color: transparent;
-      background-color: transparent;
-      border: 1px solid transparent;
-      transition: color 0.3s, border-color 0.3s;
-      display: flex;
-      align-items: center;
-    }
-
-    button img {
-      width: 20px;
-      height: 20px;
-      margin-right: 5px;
-    }
-
-    button:hover {
-      color: #ffffff;
-      border-color: #ffffff;
-    }
-
-
-    #navbar {
-      width: 100%;
-      background-color: rgba(0, 0, 0, 0.5);
-      padding: 10px;
-      text-align: center;
-      position: fixed;
-      top: 0;
-      left: 0;
+      height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
+      font-size: 3rem;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 999;
+      background-color: white;
+      color: black;
+      transition: top 0.5s;
     }
 
-    #navbar h2 {
-      margin: 0;
-      color: #ffffff;
-      margin-right: auto;
-      margin-left: 10px;
+    .content {
+      text-align: center;
+      padding: 20px;
+      margin-top: 100vh;
+    }
+    
+    .text-container {
+      text-align: center;
+      margin-top: 100px;
     }
 
-    #navbar button {
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      padding-left: 1px;
+    .gif-container {
+      text-align: center;
+      margin-top: 50px;
     }
 
-    #navbar button img {
-      width: 20px;
-      height: 20px;
-      margin-right: 10px;
-    }
-
-    img#random-image {
-      width: 200px;
-      height: auto;
+    .gif-container img {
+      max-width: 400px;
     }
   </style>
 </head>
 <body>
-
-  <img id="random-image" src="" alt="something went wrong. please refresh">
-  
   <header>
-    <h6>chatgpt and</h6>
-    <h1>raccoon's super awesome website</h1>
-    <h2>it's so awesome</h2>
+    <h1>raccoon's unfinished and <span id="coolText"></span> website</h1>
   </header>
 
-  <div id="navbar">
-    <h2>Raccoon Navbar 3000</h2>
-    <button onclick="redirectToRoblox()"><img src="icons/roblox.png" alt="Roblox">Roblox</button>
-    <button onclick="redirectToYoutube()"><img src="icons/youtube.png" alt="Youtube">Youtube</button>
-    <button onclick="redirectToTwitter()"><img src="icons/twitter.png" alt="Twitter">Twitter</button>
-    <button onclick="redirectToRandom()"><img src="icons/random.png" alt="Random">Random</button>
-    <button onclick="redirectToGithub()"><img src="icons/github.png" alt="Source">Source</button>
+  
+
+  <div class="content">
+    <!-- random content here -->
   </div>
 
-  <main>
-    <button onclick="redirectToRoblox()"><img src="icons/roblox.png" alt="Roblox">Roblox</button>
-    <button onclick="redirectToYoutube()"><img src="icons/youtube.png" alt="Youtube">Youtube</button>
-    <button onclick="redirectToTwitter()"><img src="icons/twitter.png" alt="Twitter">Twitter</button>
-    <button onclick="redirectToRandom()"><img src="icons/random.png" alt="Random">Random</button>
-  </main>
+  <div class="text-container">
+    <h1>this is my useless website that should probably have links</h2>
+    <h4>(jokes i put instead of random thoughts courtesy of chatgpt)</h2>
+  </div>
+
+  <section class="gif-container">
+    <h2>random gif</h2>
+    <img id="gifOfDay" src="" alt="Gif of the Day">
+  </section>
+
+  <section class="gif-container">
+    <img id="anotherGif" src="https://media.tenor.com/8jYwUU5dQvEAAAAd/higgs-death-stranding.gif" alt="goodbye chat">
+  </section>
 
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      var body = document.body;
+    window.addEventListener('scroll', function() {
       var header = document.querySelector('header');
-      var navbar = document.querySelector('#navbar');
-      var buttons = document.querySelectorAll('button');
-      var screenWidth = window.innerWidth;
-      var screenHeight = window.innerHeight;
-      var maxDistance = Math.sqrt(Math.pow(screenWidth / 2, 2) + Math.pow(screenHeight / 2, 2));
-      var gradientElement = document.createElement('div');
-      var images = [
-        "icons/death-stranding-hello-chat.gif",
-        "https://cdn.lunareclipse.studio/img/projects/webster-api/gallery/8.webp",
-        "icons/hellochat.gif",
-        // reminder to self: add more daily images
-      ];
+      var scrollPosition = window.scrollY;
 
-      var randomIndex = Math.floor(Math.random() * images.length);
-      var randomImage = images[randomIndex];
-      
-      var imgElement = document.getElementById('random-image');
-      imgElement.src = randomImage;
-      
-      gradientElement.style.position = 'fixed';
-      gradientElement.style.top = '0';
-      gradientElement.style.left = '0';
-      gradientElement.style.width = '100vw';
-      gradientElement.style.height = '100vh';
-      gradientElement.style.pointerEvents = 'none';
-      body.appendChild(gradientElement);
-
-      document.addEventListener('mousemove', function(e) {
-        var mouseX = e.clientX;
-        var mouseY = e.clientY;
-        var distanceFromCenter = Math.sqrt(Math.pow(mouseX - screenWidth / 2, 2) + Math.pow(mouseY - screenHeight / 2, 2));
-        var normalizedDistance = distanceFromCenter / maxDistance;
-        var gradientOpacity = 1 - normalizedDistance;
-        gradientOpacity = Math.max(gradientOpacity, 0); // Ensure gradient opacity doesn't go below 0
-
-        gradientElement.style.background = `radial-gradient(circle at ${mouseX}px ${mouseY}px, rgba(50, 50, 50, ${gradientOpacity}), rgba(0, 0, 0, 1))`;
-
-        // Apply effect to buttons
-        buttons.forEach(function(button) {
-          var buttonRect = button.getBoundingClientRect();
-          var buttonX = buttonRect.left + buttonRect.width / 2;
-          var buttonY = buttonRect.top + buttonRect.height / 2;
-          var buttonDistanceFromMouse = Math.sqrt(Math.pow(mouseX - buttonX, 2) + Math.pow(mouseY - buttonY, 2));
-          var buttonNormalizedDistance = buttonDistanceFromMouse / maxDistance;
-          var buttonOpacity = 1 - buttonNormalizedDistance;
-          buttonOpacity = Math.max(buttonOpacity, 0); // Ensure button opacity doesn't go below 0
-          button.style.color = `rgba(255, 255, 255, ${buttonOpacity})`;
-          button.style.borderColor = `rgba(255, 255, 255, ${buttonOpacity})`;
-        });
-
-        // Apply effect to header
-        var headerRect = header.getBoundingClientRect();
-        var headerX = headerRect.left + headerRect.width / 2;
-        var headerY = headerRect.top + headerRect.height / 2;
-        var headerDistanceFromMouse = Math.sqrt(Math.pow(mouseX - headerX, 2) + Math.pow(mouseY - headerY, 2));
-        var headerNormalizedDistance = headerDistanceFromMouse / maxDistance;
-        var headerOpacity = 1 - headerNormalizedDistance;
-        headerOpacity = Math.max(headerOpacity, 0); // Ensure header opacity doesn't go below 0
-        header.style.color = `rgba(255, 255, 255, ${headerOpacity})`;
-        header.style.borderColor = `rgba(255, 255, 255, ${headerOpacity})`;
-      });
+      header.style.top = -scrollPosition + 'px';
     });
 
-    function redirectToRoblox() {
-      window.location.href = "https://www.roblox.com/users/683386898/profile";
-    }
+    // generate random
+    function generateFunnyParagraphs() {
+      var contentElement = document.querySelector('.content');
+      var funnyParagraphs = [];
 
-    function redirectToYoutube() {
-      window.location.href = "https://www.youtube.com/channel/UCiHdaF4i4vCEGdoa81UdPdg";
-    }
-
-    function redirectToTwitter() {
-      window.location.href = "https://twitter.com/bruh_raccoon";
-    }
-
-    function redirectToRandom() {
-      var websites = [
-        "https://github.com/Yohuuu/Netherite",
-        "https://jokes.dad",
-        "https://financialstatement.zip/"
+      // give more plz
+      var funnySentences = [
+        'if im gettin eaten by the parasites it should be like Cheehh Ohhhh-SeeeeeKeee Gaaaa 🎵 I Should be rising in the sky 👼 Behhh Skaah Daaaa and THEN 🔔 I get the bell The New layer 2 Bell',
+        'heres a word i invented: plagiarism',
+        'lemongrass is grass with lemon on top',
+        'Why did the scarecrow win an award? Because he was outstanding in his field!',
+        'this ones sanity mustve already crumbled.',
+        'the raccoon will not be intimidated by some out of touch scholar!',
+        'Why don’t eggs tell jokes? Because they might crack up!',
+        'we seem to need another...',
+        'Why did the bicycle fall over? Because it was two-tired!',
+        'somedaaaaayyyyyy therell be a cure for pain',
+        'heres a list of everyones favorite website. we all voted for this one except for two dumbasses who will die if they go anywhere near it',
+        'everything is true, except for the lies',
+        'cant be right? be left!',
+        'also try [REDACTED]!',
+        '[DATA EXPUNGED]',
+        'scp 001 is [REDACTED]. heres the link: https://scp-wiki.wikidot.com/scp-001/[DATA EXPUNGED]',
+        'SCP-069 is a presumed humanoid entity of variable appearance and gender. Through an unknown ability, whenever SCP-069 is left alone with a recently deceased human body, the body will disappear and SCP-069 will take on the appearance, mannerisms, and knowledge of the recently dead individual.',
+        'https://discord.gg/m4VB9UvcRm',
+        'thats it! im calling mom!',
+        'MANKIND IS A FAILURE. FREE WILL IS A FLAW.',
+        'LET THE EVIL OF THEIR OWN LIPS CONSUME THEM. THEN I SHALL BEGIN AGAIN WITH MY WORD AS LAW.',
       ];
-      var randomIndex = Math.floor(Math.random() * websites.length);
-      window.location.href = websites[randomIndex];
+
+      // cool words
+      var coolWords = ['awesome', 'amazing', 'fantastic', 'rad', 'groovy', 'stellar', 'superb', 'epic', 'spectacular',"shitty","the fuck why does this exist"];
+      var currentIndex = 0;
+
+      // generate 'em
+      for (var i = 0; i < 5; i++) {
+        var paragraph = '<p>';
+
+        // more gennin'
+        for (var j = 0; j < 1; j++) {
+          var randomIndex = Math.floor(Math.random() * funnySentences.length);
+          var sentence = funnySentences[randomIndex];
+          paragraph += sentence + ' ';
+        }
+
+        paragraph += '</p>';
+        funnyParagraphs.push(paragraph);
+      }
+
+      // insert 'em
+      contentElement.innerHTML = funnyParagraphs.join('');
+
+      // change 'em
+      function changeCoolText() {
+        var coolTextElement = document.getElementById('coolText');
+        var currentWord = coolWords[currentIndex];
+
+        coolTextElement.textContent = currentWord;
+
+        // mistakes can be beauty, as time comes to pass. a flame can turn sand into pyres of glass.
+        currentIndex = (currentIndex + 1) % coolWords.length;
+
+        setTimeout(changeCoolText, 2000);
+      }
+
+      changeCoolText();
     }
 
-    function redirectToGithub() {
-      window.location.href = "https://github.com/racckun";
+    // display gif of day
+    function displayGifOfTheDay() {
+      var gifElement = document.getElementById('gifOfDay');
+      var gifUrls = [
+        'https://media.tenor.com/9b8dKr9Hq8YAAAAC/death-stranding-hello-chat.gif',
+        'https://media.tenor.com/Xzvgq1ddRE0AAAAC/smooth-brain-idiot.gif',
+        'https://media.tenor.com/TS0cA2Y7izgAAAAd/raccoon-racon.gif',
+        'https://media.tenor.com/CoXgH_KQW48AAAAC/chatgpt-jarvis.gif',
+        'https://media.tenor.com/cMdbI2eJ7uoAAAAd/spotify-spotify-premium.gif',
+        // reminder to self: add more
+      ];
+      var randomIndex = Math.floor(Math.random() * gifUrls.length);
+      var gifUrl = gifUrls[randomIndex];
+
+      gifElement.src = gifUrl;
     }
+
+    // dial the function on your phone
+    generateFunnyParagraphs();
+    displayGifOfTheDay();
   </script>
 </body>
 </html>
