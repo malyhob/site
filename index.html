@@ -5,7 +5,7 @@
   <link rel="icon" href="icons/favicon.ico" type="image/x-icon">
 
   <meta property="og:title" content="raccoon's super awesome website">
-  <meta property="og:description" content="a website featuring random stuff">
+  <meta property="og:description" content="a website featuring links to various social media profiles">
   <meta property="og:image" content="https://cdn.discordapp.com/attachments/833745553279549500/1109479805868593182/th.png">
   <meta property="og:url" content="https://racckun.github.io/site/">
   <style>
@@ -49,6 +49,21 @@
     .gif-container img {
       max-width: 400px;
     }
+
+    .button {
+      display: inline-block;
+      padding: 10px 20px;
+      font-size: 1rem;
+      background-color: #4CAF50;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: #45a049;
+    }
   </style>
 </head>
 <body>
@@ -60,6 +75,10 @@
 
   <div class="content">
     <!-- random content here -->
+  </div>
+
+  <div class="text-container">
+    <button class="button" onclick="goToPortfolioPage()">portfolio</button>
   </div>
 
   <div class="text-container">
@@ -167,6 +186,10 @@
       var gifUrl = gifUrls[randomIndex];
 
       gifElement.src = gifUrl;
+    }
+
+    function goToPortfolioPage() {
+      window.location.href = 'portfolio.html'; // Replace with the actual URL of your portfolio page
     }
 
     // dial the function on your phone
