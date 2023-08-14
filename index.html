@@ -12,28 +12,18 @@
     body {
       margin: 0;
       padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: white; /* Set background color to white */
     }
 
     header {
       height: 100vh;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      font-size: 3rem;
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 999;
       background-color: white;
       color: black;
-      transition: top 0.5s;
-    }
-
-    .content {
-      text-align: center;
-      padding: 20px;
-      margin-top: 100vh;
     }
     
     .text-container {
@@ -41,173 +31,205 @@
       margin-top: 100px;
     }
 
-    .gif-container {
+    .gallery-container {
       text-align: center;
       margin-top: 50px;
+      overflow: hidden;
     }
 
-    .gif-container img {
+    .gallery {
+      display: flex;
+      transition: transform 0.5s ease;
+    }
+
+    .gallery img {
       max-width: 400px;
+      margin: 0 10px;
     }
 
-    .button {
-      display: inline-block;
+    .dark-button {
+      display: inline-block; /* Display as inline-block */
       padding: 10px 20px;
       font-size: 1rem;
-      background-color: #4CAF50;
+      background-color: #333;
       color: #fff;
       text-decoration: none;
       border-radius: 5px;
       transition: background-color 0.3s ease;
+      margin: 0 10px; /* Add margin */
     }
 
-    .button:hover {
-      background-color: #45a049;
+    .dark-button:hover {
+      background-color: #222;
+    }
+
+    .dark-button-row {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    h1 {
+      font-size: 3.5rem; /* Increased title text size */
+    }
+
+    .text-box {
+      background-color: #f5f5f5; /* Slightly darker background color */
+      padding: 20px;
+      position: relative;
+      max-width: 100%;
+    }
+
+    .text-box p {
+      font-size: 1rem;
+      margin: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: inline-block;
+      max-width: 100%;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    .modal-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: white;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .modal img {
+      max-width: 100%;
+      height: auto;
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>raccoon's unfinished and <span id="coolText"></span> website</h1>
+    <h1>raccoon's <span style="color: red; font-weight: bold;" id="coolText"></span> website</h1>
   </header>
 
-  
-
   <div class="content">
-    <!-- random content here -->
+    <div class="text-container">
+      <h1>hi! i'm <span style="color: red; font-weight: bold;">raccoon</span></h1>
+    </div>
+
+    <div class="modal" id="modal" onclick="closeModal()">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img id="modalImg" src="" alt="Modal GIF">
+      </div>
+    </div>
+
+    
+
+    <div class="text-box">
+      <p>
+        , an amateur programmer that specializes in... what? theres a portfolio for that? oh cool. i also like video games and music. im too lazy to write more of this.
+      </p>
+    </div>
+
+    <div class="dark-button-row">
+      <a class="dark-button" href="portfolio.html">portfolio</a>
+      <a class="dark-button" href="https://open.spotify.com/playlist/1Xe17nk2RqeXDOvsiQCs0S?si=c16a9c530ec14f52">playlist</a>
+    </div>
+
+    <div class="dark-button-row">
+      <a class="button dark-button" onclick="scrollGallery('left')">left</a>
+      <a class="button dark-button" onclick="scrollGallery('right')">right</a>
+    </div>
+
+    <div class="gallery-container">
+      <div class="gallery">
+        <img src="https://media.tenor.com/9b8dKr9Hq8YAAAAC/death-stranding-hello-chat.gif" alt="Gif of the Day" onclick="openModal(this.src)">
+        <img src="https://media.tenor.com/Xzvgq1ddRE0AAAAC/smooth-brain-idiot.gif" alt="Smooth Brain" onclick="openModal(this.src)">
+        <img src="https://media.tenor.com/TS0cA2Y7izgAAAAd/raccoon-racon.gif" alt="Raccoon GIF" onclick="openModal(this.src)">
+        <img src="https://media.tenor.com/CoXgH_KQW48AAAAC/chatgpt-jarvis.gif" alt="ChatGPT Jarvis" onclick="openModal(this.src)">
+        <img src="https://media.tenor.com/cMdbI2eJ7uoAAAAd/spotify-spotify-premium.gif" alt="Spotify Premium" onclick="openModal(this.src)">
+        <img src="https://media.tenor.com/LCGbh2gWC_cAAAAC/ultrakill-may-your-ls-be-many-and-your-bitches-few.gif" alt="UltraKill" onclick="openModal(this.src)">
+        <img src="https://media.tenor.com/PoBNrF0XWi0AAAAC/meme-lang.gif" alt="Meme Language" onclick="openModal(this.src)">
+        <img src="https://media.tenor.com/RLiKJf4SHYkAAAAd/giant-cockroach-escaping-speedrun-bedrun-cockroach-ucd.gif" alt="Cockroach Speedrun" onclick="openModal(this.src)">
+        <img src="https://media.tenor.com/boiPHdyVTJ8AAAAd/i-know-your-ip-address-we-know-your-ip-address.gif" alt="IP Address" onclick="openModal(this.src)">
+        <img src="https://media.tenor.com/WM8aJntH178AAAAC/ben-shapiro-rule24.gif" alt="Ben Shapiro" onclick="openModal(this.src)">
+        <img src="https://media.tenor.com/p7y40D0FzPcAAAAd/cliff-death-stranding.gif" alt="Cliff Death Stranding" onclick="openModal(this.src)">
+        <img src="https://media.discordapp.net/attachments/914167095044997180/1105334595290943569/freeze-1.gif" alt="Freeze GIF" onclick="openModal(this.src)">
+        <img src="https://media.tenor.com/BmnPnwl2-l0AAAAC/the-meme.gif" alt="The Meme" onclick="openModal(this.src)">
+        <!-- Add more GIFs here -->
+      </div>
+      
+    </div>
   </div>
 
-  <div class="text-container">
-    <button class="button" onclick="goToPortfolioPage()">portfolio</button>
+    
   </div>
-
-  <div class="text-container">
-    <h1>this is my useless website that should probably have links</h2>
-    <h4>(jokes i put instead of random thoughts courtesy of chatgpt)</h2>
-    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/1Xe17nk2RqeXDOvsiQCs0S?utm_source=generator" width="450" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-  </div>
-
-  
-
-  <section class="gif-container">
-    <h2>random gif</h2>
-    <img id="gifOfDay" src="" alt="Gif of the Day">
-  </section>
-
-  <section class="gif-container">
-    <img id="anotherGif" src="https://media.tenor.com/8jYwUU5dQvEAAAAd/higgs-death-stranding.gif" alt="goodbye chat">
-  </section>
 
   <script>
-    window.addEventListener('scroll', function() {
-      var header = document.querySelector('header');
-      var scrollPosition = window.scrollY;
+    // List of cool words for title
+    var coolWords = ['awesome', 'amazing', 'fantastic', 'rad', 'groovy', 'stellar', 'superb', 'epic', 'spectacular',"shitty","the fuck why does this exist","sick"];
+    var currentIndex = 0;
 
-      header.style.top = -scrollPosition + 'px';
-    });
+    // Function to change cool text in title
+    function changeCoolText() {
+      var coolTextElement = document.getElementById('coolText');
+      var currentWord = coolWords[currentIndex];
 
-    // generate random
-    function generateFunnyParagraphs() {
-      var contentElement = document.querySelector('.content');
-      var funnyParagraphs = [];
+      coolTextElement.textContent = currentWord;
 
-      // give more plz
-      var funnySentences = [
-        'if im gettin eaten by the parasites it should be like Cheehh Ohhhh-SeeeeeKeee Gaaaa 🎵 I Should be rising in the sky 👼 Behhh Skaah Daaaa and THEN 🔔 I get the bell The New layer 2 Bell',
-        'heres a word i invented: plagiarism',
-        'lemongrass is grass with lemon on top',
-        'Why did the scarecrow win an award? Because he was outstanding in his field!',
-        'this ones sanity mustve already crumbled.',
-        'the raccoon will not be intimidated by some out of touch scholar!',
-        'Why don’t eggs tell jokes? Because they might crack up!',
-        'we seem to need another...',
-        'Why did the bicycle fall over? Because it was two-tired!',
-        'somedaaaaayyyyyy therell be a cure for pain',
-        'heres a list of everyones favorite website. we all voted for this one except for two dumbasses who will die if they go anywhere near it',
-        'everything is true, except for the lies',
-        'cant be right? be left!',
-        'also try [REDACTED]!',
-        '[DATA EXPUNGED]',
-        'scp 001 is [REDACTED]. heres the link: https://scp-wiki.wikidot.com/scp-001/[DATA EXPUNGED]',
-        'SCP-069 is a presumed humanoid entity of variable appearance and gender. Through an unknown ability, whenever SCP-069 is left alone with a recently deceased human body, the body will disappear and SCP-069 will take on the appearance, mannerisms, and knowledge of the recently dead individual.',
-        'https://discord.gg/m4VB9UvcRm',
-        'thats it! im calling mom!',
-        'MANKIND IS A FAILURE. FREE WILL IS A FLAW.',
-        'LET THE EVIL OF THEIR OWN LIPS CONSUME THEM. THEN I SHALL BEGIN AGAIN WITH MY WORD AS LAW.',
-        'TECHNOBLADE NEVER DIES!',
-      ];
+      currentIndex = (currentIndex + 1) % coolWords.length;
 
-      
-      // cool words
-      var coolWords = ['awesome', 'amazing', 'fantastic', 'rad', 'groovy', 'stellar', 'superb', 'epic', 'spectacular',"shitty","the fuck why does this exist","sick"];
-      var currentIndex = 0;
+      setTimeout(changeCoolText, 2000);
+    }
 
-      // generate 'em
-      for (var i = 0; i < 5; i++) {
-        var paragraph = '<p>';
+    // Call the change function
+    changeCoolText();
 
-        // more gennin'
-        for (var j = 0; j < 1; j++) {
-          var randomIndex = Math.floor(Math.random() * funnySentences.length);
-          var sentence = funnySentences[randomIndex];
-          paragraph += sentence + ' ';
+    var gallery = document.querySelector('.gallery');
+    var galleryWidth = gallery.offsetWidth;
+    var galleryItemWidth = 420; // Adjust this to the width of your gallery items
+    var galleryIndex = 0; // Initialize the gallery index
+    var maxIndex = Math.max(0, gallery.children.length - 3);
+
+    // Scroll the gallery left or right
+    function scrollGallery(direction) {
+      if (direction === 'left') {
+        if (galleryIndex > 0) {
+          galleryIndex--;
         }
+      } else if (direction === 'right') {
 
-        paragraph += '</p>';
-        funnyParagraphs.push(paragraph);
+        if (galleryIndex < maxIndex) {
+          galleryIndex++;
+        }
       }
-
-      // insert 'em
-      contentElement.innerHTML = funnyParagraphs.join('');
-
-      // change 'em
-      function changeCoolText() {
-        var coolTextElement = document.getElementById('coolText');
-        var currentWord = coolWords[currentIndex];
-
-        coolTextElement.textContent = currentWord;
-
-        // mistakes can be beauty, as time comes to pass. a flame can turn sand into pyres of glass.
-        currentIndex = (currentIndex + 1) % coolWords.length;
-
-        setTimeout(changeCoolText, 2000);
-      }
-
-      changeCoolText();
+      gallery.style.transform = `translateX(-${galleryIndex * galleryItemWidth}px)`;
     }
 
-    // display gif of day
-    function displayGifOfTheDay() {
-      var gifElement = document.getElementById('gifOfDay');
-      var gifUrls = [
-        'https://media.tenor.com/9b8dKr9Hq8YAAAAC/death-stranding-hello-chat.gif',
-        'https://media.tenor.com/Xzvgq1ddRE0AAAAC/smooth-brain-idiot.gif',
-        'https://media.tenor.com/TS0cA2Y7izgAAAAd/raccoon-racon.gif',
-        'https://media.tenor.com/CoXgH_KQW48AAAAC/chatgpt-jarvis.gif',
-        'https://media.tenor.com/cMdbI2eJ7uoAAAAd/spotify-spotify-premium.gif',
-        'https://media.tenor.com/LCGbh2gWC_cAAAAC/ultrakill-may-your-ls-be-many-and-your-bitches-few.gif',
-        'https://media.tenor.com/PoBNrF0XWi0AAAAC/meme-lang.gif',
-        'https://media.tenor.com/RLiKJf4SHYkAAAAd/giant-cockroach-escaping-speedrun-bedrun-cockroach-ucd.gif',
-        'https://media.tenor.com/boiPHdyVTJ8AAAAd/i-know-your-ip-address-we-know-your-ip-address.gif',
-        'https://media.tenor.com/WM8aJntH178AAAAC/ben-shapiro-rule24.gif',
-        'https://media.tenor.com/p7y40D0FzPcAAAAd/cliff-death-stranding.gif',
-        'https://media.discordapp.net/attachments/914167095044997180/1105334595290943569/freeze-1.gif',
-        'https://media.tenor.com/BmnPnwl2-l0AAAAC/the-meme.gif'
-        // reminder to self: add more
-      ];
-      var randomIndex = Math.floor(Math.random() * gifUrls.length);
-      var gifUrl = gifUrls[randomIndex];
-
-      gifElement.src = gifUrl;
+    function openModal(src) {
+      var modal = document.getElementById('modal');
+      var modalImg = document.getElementById('modalImg');
+      modal.style.display = 'block';
+      modalImg.src = src;
     }
 
-    function goToPortfolioPage() {
-      window.location.href = 'portfolio.html'; // Replace with the actual URL of your portfolio page
+    // Close the modal
+    function closeModal() {
+      var modal = document.getElementById('modal');
+      modal.style.display = 'none';
     }
-
-    // dial the function on your phone
-    generateFunnyParagraphs();
-    displayGifOfTheDay();
   </script>
 </body>
 </html>
