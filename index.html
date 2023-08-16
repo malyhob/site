@@ -13,7 +13,7 @@
       margin: 0;
       padding: 0;
       font-family: Arial, sans-serif;
-      background-color: white; /* Set background color to white */
+      background-color: white; 
     }
 
     header {
@@ -48,7 +48,7 @@
     }
 
     .dark-button {
-      display: inline-block; /* Display as inline-block */
+      display: inline-block;
       padding: 10px 20px;
       font-size: 1rem;
       background-color: #333;
@@ -56,7 +56,7 @@
       text-decoration: none;
       border-radius: 5px;
       transition: background-color 0.3s ease;
-      margin: 0 10px; /* Add margin */
+      margin: 0 10px;
     }
 
     .dark-button:hover {
@@ -70,11 +70,11 @@
     }
 
     h1 {
-      font-size: 3.5rem; /* Increased title text size */
+      font-size: 3.5rem; 
     }
 
     .text-box {
-      background-color: #f5f5f5; /* Slightly darker background color */
+      background-color: #f5f5f5; 
       padding: 20px;
       position: relative;
       max-width: 100%;
@@ -168,7 +168,7 @@
         <img src="https://media.tenor.com/p7y40D0FzPcAAAAd/cliff-death-stranding.gif" alt="Cliff Death Stranding" onclick="openModal(this.src)">
         <img src="https://media.discordapp.net/attachments/914167095044997180/1105334595290943569/freeze-1.gif" alt="Freeze GIF" onclick="openModal(this.src)">
         <img src="https://media.tenor.com/BmnPnwl2-l0AAAAC/the-meme.gif" alt="The Meme" onclick="openModal(this.src)">
-        <!-- Add more GIFs here -->
+        <!-- MOREEEE -->
       </div>
       
     </div>
@@ -178,11 +178,9 @@
   </div>
 
   <script>
-    // List of cool words for title
     var coolWords = ['awesome', 'amazing', 'fantastic', 'rad', 'groovy', 'stellar', 'superb', 'epic', 'spectacular',"shitty","the fuck why does this exist","sick"];
     var currentIndex = 0;
 
-    // Function to change cool text in title
     function changeCoolText() {
       var coolTextElement = document.getElementById('coolText');
       var currentWord = coolWords[currentIndex];
@@ -194,16 +192,14 @@
       setTimeout(changeCoolText, 2000);
     }
 
-    // Call the change function
     changeCoolText();
 
     var gallery = document.querySelector('.gallery');
     var galleryWidth = gallery.offsetWidth;
-    var galleryItemWidth = 420; // Adjust this to the width of your gallery items
-    var galleryIndex = 0; // Initialize the gallery index
+    var galleryItemWidth = 420; // adjust to gallery numbers
+    var galleryIndex = 0; 
     var maxIndex = Math.max(0, gallery.children.length - 3);
 
-    // Scroll the gallery left or right
     function scrollGallery(direction) {
       if (direction === 'left') {
         if (galleryIndex > 0) {
@@ -224,8 +220,6 @@
       modal.style.display = 'block';
       modalImg.src = src;
     }
-
-    // Close the modal
     function closeModal() {
       var modal = document.getElementById('modal');
       modal.style.display = 'none';
