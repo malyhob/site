@@ -250,6 +250,7 @@
       modal.style.display = 'none';
     }
 
+    // chat gpt:
     $(document).ready(function() {
       $('#inquiry-form').submit(function(e) {
         e.preventDefault();
@@ -257,8 +258,8 @@
         var name = $('#name').val();
         var message = $('#message').val();
 
-        // Replace with your Discord webhook URL
-        var webhookUrl = 'YOUR_DISCORD_WEBHOOK_URL';
+        // i swear to god if anyone sends anything through this you will be ip traced and brutally massacred (for legal reasons this is a joke)
+        var webhookUrl = 'https://discord.com/api/webhooks/1145390814290255972/HtbBWkRZ-FKJ0W-E3zBrYZjJ69DmjC6lFF6ygwNfLk47aZD4YXQTiHrgIe6MRuHcszNg';
 
         var payload = {
           username: 'inquiries',
