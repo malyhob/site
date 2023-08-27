@@ -256,12 +256,21 @@
         
         var name = $('#name').val();
         var message = $('#message').val();
-        
+
+        // Replace with your Discord webhook URL
+        var webhookUrl = 'YOUR_DISCORD_WEBHOOK_URL';
+
+        var payload = {
+          username: 'inquiries',
+          content: "a kid called " + name + " said: " + message
+        };
+
         $.ajax({
           type: 'POST',
-          url: 'submit_inquiry.php',
-          data: { name: name, message: message },
-          success: function(response) {
+          url: webhookUrl,
+          data: JSON.stringify(payload),
+          contentType: 'application/json',
+          success: function() {
             alert('Inquiry sent successfully!');
             $('#name').val('');
             $('#message').val('');
