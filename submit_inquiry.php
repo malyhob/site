@@ -5,12 +5,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
   // Create the message payload
   $payload = json_encode([
-    'username' => 'Inquiry Bot',
-    'content' => "New Inquiry from $name: $message"
+    'username' => 'inquiry',
+    'content' => "inquiry from some kid called $name: $message"
   ]);
 
   // Send the payload to the Discord webhook URL
-  $webhookUrl = 'YOUR_DISCORD_WEBHOOK_URL';
+  $webhookUrl = 'https://discord.com/api/webhooks/1145390814290255972/HtbBWkRZ-FKJ0W-E3zBrYZjJ69DmjC6lFF6ygwNfLk47aZD4YXQTiHrgIe6MRuHcszNg'; // i swear if you use this i will track your ip down and chop your head off
   $ch = curl_init($webhookUrl);
   curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
   curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
