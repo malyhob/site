@@ -27,3 +27,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 } else {
   http_response_code(405); // Method Not Allowed
 }
+
+error: function(xhr, status, error) {
+  console.error(error);
+  alert('Error sending inquiry. Check console for details.');
+}
