@@ -117,21 +117,6 @@
       max-width: 100%;
       height: auto;
     }
-    #form-container {
-      background-color: white;
-      border-radius: 8px;
-      padding: 20px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      width: 400px;
-    }
-    input, textarea, button {
-      display: block;
-      width: 100%;
-      margin-bottom: 10px;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
   </style>
 </head>
 <body>
@@ -171,11 +156,11 @@
 
     <div id="form-container">
     <h1>inquiries</h1>
-    <form id="inquiry-form">
-      <input type="text" id="name" placeholder="name" required>
-      <textarea id="message" placeholder="inquiry" required></textarea>
-      <button type="submit">Send</button>
-    </form>
+    <form action="https://formspree.io/f/xzblrwgl" method="POST">
+    <input type="text" name="name" placeholder="name" required>
+    <textarea name="message" placeholder="inquiry" required></textarea>
+    <button type="submit">send</button>
+  </form>
   </div>
 
     <div class="gallery-container">
@@ -249,39 +234,6 @@
       var modal = document.getElementById('modal');
       modal.style.display = 'none';
     }
-
-    // chat gpt:
-    $(document).ready(function() {
-      $('#inquiry-form').submit(function(e) {
-        e.preventDefault();
-        
-        var name = $('#name').val();
-        var message = $('#message').val();
-
-        // i swear to god if anyone sends anything through this you will be ip traced and brutally massacred (for legal reasons this is a joke)
-        var webhookUrl = 'https://discord.com/api/webhooks/1145390814290255972/HtbBWkRZ-FKJ0W-E3zBrYZjJ69DmjC6lFF6ygwNfLk47aZD4YXQTiHrgIe6MRuHcszNg';
-
-        var payload = {
-          username: 'inquiries',
-          content: "a kid called " + name + " said: " + message
-        };
-
-        $.ajax({
-          type: 'POST',
-          url: webhookUrl,
-          data: JSON.stringify(payload),
-          contentType: 'application/json',
-          success: function() {
-            alert('Inquiry sent successfully!');
-            $('#name').val('');
-            $('#message').val('');
-          },
-          error: function() {
-            alert('Error sending inquiry.');
-          }
-        });
-      });
-    });
   </script>
 </body>
 </html>
